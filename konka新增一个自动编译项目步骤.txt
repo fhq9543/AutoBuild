@@ -1,0 +1,24 @@
+konka 新增一个自动编译项目步骤：（这里以KDL40MH660LN为例）
+1. cd /home/huaqing.fang/AUTOBUILD 
+2. cd Beta_release
+3. source ./build/kk_envsetup.sh 并选择要编译的项目（如KDL40MH660LN）
+4. cd ..
+5. cp vendor/mstar/supernova/projects/configuration/.config KDL40MH660LN.config #拷贝配置文件，自动编译时需要用到
+6. cp KDL32MH660LN.sh KDL40MH660LN.sh #以32寸项目为模板拷贝为40寸项目的自动编译文件
+7. 修改KDL40MH660LN.sh的第20行，
+cp -f KDL32MH660LN.config Beta_release/vendor/mstar/supernova/projects/configuration/.config && \
+将KDL32MH660LN.config改为KDL40MH660LN.config
+8. 修改cronfile文件，在后面添加./KDL40MH660LN.sh > autobuild.log 2>&1
+9. crontab cronfile
+
+生成的image放在对应项目的目录上。如KDL40MH660LN项目的image在KDL40MH660LN目录上。
+编译失败则目录以_false结尾。
+
+详细文档可查看autobuild_usage.doc
+
+其他：
+服务器ip：10.116.2.144
+个人账号：huaqing.fang
+密码:123456
+samba地址：//10.116.2.144/home
+

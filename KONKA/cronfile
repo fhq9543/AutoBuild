@@ -1,0 +1,3 @@
+# min hour  day-of-month mon day-of-weekend   command
+30 1 * * * cd /home/huaqing.fang/AUTOBUILD/KONKA; ./KDL32MH660LN.sh >> autobuild.log 2>&1; ./KDL32MH660UN.sh >> autobuild.log 2>&1;
+
